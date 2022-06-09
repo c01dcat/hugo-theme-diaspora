@@ -1,0 +1,18 @@
+<div class="nav">
+    <ul id="menu-menu" class="menu">
+        {{ range .Site.Menus.main }}
+            <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="{{ .URL }}">
+                    {{ $name := print .Name | safeHTML }}
+                    {{ $name }}
+                </a>
+            </li>
+        {{ end }}
+    </ul>
+
+    <p id="copyright">
+       Copyright &copy; {{ now.Format "2006" }} {{ .Site.Title }}.
+       <span> | </span> Powered by <a href="https://gohugo.io/">Hugo</a>
+       <span> | </span> <a href="https://github.com/c01dcat/hugo-theme-diaspora">Diaspora Theme</a> by Cold Cat
+    </p>
+</div>

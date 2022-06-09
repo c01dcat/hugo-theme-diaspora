@@ -1,0 +1,44 @@
+{{ define "main" }}
+<div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar" style="width: 0;"></div>
+        <a href="javascript:;" class="iconfont icon-home image-icon" data-url="/"></a>
+        <div title="播放/暂停" class="iconfont icon-play"></div>
+        <h3 class="subtitle">{{ .Title }}</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a href="javascript:;" title="获取二维码" class="iconfont icon-scan"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div class="main">
+                <h1 class="title">{{ .Title }}</h1>
+                <div class="stuff">
+                    <span>{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Format "02, 2006" }}</span>
+                    <span>阅读时间：{{ math.Round (div (countwords .Content) 300.0) }} 分钟</span>
+                    <ul class="post-tags-list">
+                        {{ range .Params.tags }}
+                            <li class="post-tags-list-item">
+                                <a class="post-tags-list-link" href="/tags/{{ . | urlize}}">{{ . }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </div>
+                <section class="content markdown">
+                    {{ .Content }}
+                    <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="{{ .Params.bgmAutoplay }}">
+                        <source type="audio/mpeg" src="{{ .Params.bgm }}">
+                        <a href="{{ .Params.bgm }}">{{ .Params.bgm }}</a>
+                    </audio>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
