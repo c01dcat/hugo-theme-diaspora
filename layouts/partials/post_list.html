@@ -1,0 +1,3 @@
+{{ range after 1 (where .Paginator.Pages "Type" "posts") }}
+    {{- partial "post_summary.html" . -}}
+{{ end }}

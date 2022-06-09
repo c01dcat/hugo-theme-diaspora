@@ -1,0 +1,25 @@
+{{ range first 1 (where .Paginator.Pages "Type" "posts") }}
+<div id="screen">
+    <div id="mark">
+        <div class="layer" data-depth="0.4">
+            <img src="/img/welcome-cover.jpg" alt="cover" id="cover" crossorigin="anonymous" width="1920" height="1080">
+        </div>
+    </div>
+    <div id="vibrant">
+        <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
+            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0" />
+        </svg>
+    </div>
+    <div id="header">
+        <div>
+            <a href="/" class="image-logo"></a>
+            <div class="iconfont icon-menu switchmenu"></div>
+        </div>
+    </div>
+    <div id="post0">
+        <p>{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Format "02, 2006" }}</p>
+        <h2><a href="{{ .Permalink }}" title="{{ .Title }}" class="posttitle">{{ .Title }}</a></h2>
+        <p class="summary">{{- with .Description -}}{{ . | truncate 60 }}{{- else -}}{{ .Summary | truncate 60 }}{{- end }}</p>
+    </div>
+</div>
+{{ end }}
