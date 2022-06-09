@@ -9,6 +9,18 @@
             </li>
         {{ end }}
     </ul>
+    <span class="target"></span>
+    <center>
+        <div class="hitokoto">
+            <span class="typed" id="hitokoto" data-st="{{ .Site.Params.hitokotoEnabled }}"></span>
+        </div>
+    </center>
+
+    <p class="footerlinks">
+        {{ range .Site.Data.socialmedia.accounts }}
+            <a href="{{ .url }}" class="{{ .icon }}" title="{{ .name }}" target="_blank" rel="noopener"></a>
+        {{ end }}
+    </p>
 
     <p id="copyright">
        Copyright &copy; {{ now.Format "2006" }} {{ .Site.Title }}.
