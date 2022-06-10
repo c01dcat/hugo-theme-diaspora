@@ -1,0 +1,29 @@
+{{ define "main" }}
+    <div id="single" class="page">
+        {{- partial "top.html" . -}}
+        <div class="section">
+            <div class="article">
+                <div class="main">
+                    <div class="content">
+                        <div class="set">
+                            <h2>{{ .Title }}</h2>
+                            {{ $fontUnit := "px" }}
+                            {{ $minFontSize := 14.0 }}
+                            {{ $maxFontSize := 36.0 }}
+                            {{ $fontSpread := sub $maxFontSize $minFontSize }}
+                            {{ $max := add (len (first 1 .Data.Terms.ByCount)) 1}}
+                            {{ $min := len (first 1 .Data.Terms.ByCount.Reverse) }}
+                            {{ $spread := sub $max $min }}
+                            {{ $fontStep := div $fontSpread $spread }}
+                            {{ range .Data.Terms }}
+                                {{ $currentTagCount := .Count }}
+                                {{ $currentFontSize := (add $minFontSize (mul (sub $currentTagCount $min) $fontStep)) }}
+                                <a href="{{ .Page.Permalink }}" style="font-size: {{ $currentFontSize }}{{ $fontUnit}}; color: {{ if (gt $currentFontSize 25.0) }}gray{{ else }}#9e9e9e{{ end }}">{{ .Page.Title }}</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
