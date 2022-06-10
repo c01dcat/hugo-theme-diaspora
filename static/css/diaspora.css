@@ -327,7 +327,6 @@ pre .keyword,pre .javascript .function {color:#cc99cc;}
   #pager {margin:30px 0 0;}
   h1.title {font-size:24px;}
   .tab {display:none;}
-  .icon-scan {display:none!important;}
   .icon-images {left:80px;}
   .icon-pause,.icon-play {left:50px;}
   .comment.link {width:140px;padding:5px 0;}
@@ -344,7 +343,6 @@ pre .keyword,pre .javascript .function {color:#cc99cc;}
   #post0 h2 a {color:#fff;}
   #post0 .summary {display:none;}
   .stuff span {margin-right:10px;}
-  .stuff span:first-child {display:none;}
   .content table {font-size:smaller;}
   .content table tr td {padding:6px;}
   .article {width:100%;}
