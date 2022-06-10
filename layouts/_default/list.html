@@ -1,0 +1,20 @@
+{{ define "main" }}
+    <div id="single" class="page">
+        {{- partial "top.html" . -}}
+        <div class="section">
+            <div class="article">
+                <div class="main">
+                    <div class="content">
+                        <h2 class="timeline-title">{{ .Title }}</h2><hr>
+                        {{ range .Pages }}          
+                        <div class="timeline-item">
+                            <time>{{ .Date.Format "2006-01-02" }}</time>
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
