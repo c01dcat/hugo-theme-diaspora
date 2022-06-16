@@ -100,7 +100,7 @@ var Diaspora = {
             setTimeout(function() {
                 Diaspora.player();
                 $('#top').show();
-                comment = $("#gitalk-container");
+                comment = $("#remark");
                 if (comment.data('ae') == true){
                     comment.click();
                 }
@@ -423,10 +423,7 @@ $(function() {
 						var data = data;
 						var str =  data.hitokoto + " ——  By "		
 						var options = {
-						  strings: [ 
-							//str + "Who??^1000",
-							//str + "It's me^2000",
-							//str +'Haha, make a joke',
+						  strings: [
 							str + data.from,
 						  ],
 						  typeSpeed: 90,
@@ -605,24 +602,35 @@ $(function() {
                 break;
             // comment
             case - 1 != tag.indexOf("comment"): 
-				if($('#gitalk-container').data('enable') == true){
-					Diaspora.loading(),
-					comment = $('#gitalk-container');
-					gitalk = new Gitalk({
-					  clientID: comment.data('ci'),
-					  clientSecret: comment.data('cs'),
-					  repo: comment.data('r'),
-					  owner: comment.data('o'),
-					  admin: comment.data('a'),
-					  id: decodeURI(window.location.pathname),
-					  distractionFreeMode: comment.data('d')
-					})
-					$(".comment").removeClass("link")
-					gitalk.render('gitalk-container')
-					Diaspora.loaded();
-				}else{
-					$('#gitalk-container').html("评论已关闭");
-				}
+                if($('.comment').data('enable') == true){
+                    Diaspora.loading(),
+                    comment = $('.comment');
+                    comment.removeClass("link")
+                    comment.html(`
+<script>
+    var remark_config = {
+        host: comment.data('rh'),
+        site_id: comment.data('si'),
+        locale: 'zh',
+    }
+</script>
+<script>
+    ! function (e, n) {
+        for (var o = 0; o < e.length; o++) {
+            var r = n.createElement("script"),
+                c = ".js",
+                d = n.head || n.body;
+            "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host +
+                "/web/" + e[o] + c, d.appendChild(r)
+        }
+    }(remark_config.components || ["embed"], document);
+</script>
+                    `)
+                    comment.remove()
+                    Diaspora.loaded();
+                }else{
+                    $('.comment').html("评论已关闭");
+                }
                 return false;
                 break;
             default:
@@ -631,11 +639,11 @@ $(function() {
         }
     })
     // 是否自动展开评论
-    comment = $("#gitalk-container");
+    comment = $(".comment");
     if (comment.data('ae') == true){
         comment.click();
     }
 		
-    console.log("%c Github %c","background:#24272A; color:#ffffff","","https://github.com/Fechin/hexo-theme-diaspora")
+    console.log("%c Github %c","background:#24272A; color:#ffffff","","https://github.com/c01dcat/hugo-theme-diaspora")
 })
 

@@ -142,6 +142,7 @@ h1.title {font-size:30px;color:#333;line-height:1.3;position:relative;font-weigh
 .page .content:before {display:none;}
 .stuff {margin-top:20px;color:#666;font-size:13px;}
 .stuff span {display:inline-block;margin-right:20px;}
+.stuff a {color:#666;background-color: transparent;text-decoration: none;}
 .stuff .likeThis {pointer-events:none;}
 .stuff .icon-like {display:none;}
 .stuff .count {color:#666;}
@@ -327,7 +328,6 @@ pre .keyword,pre .javascript .function {color:#cc99cc;}
   #pager {margin:30px 0 0;}
   h1.title {font-size:24px;}
   .tab {display:none;}
-  .icon-scan {display:none!important;}
   .icon-images {left:80px;}
   .icon-pause,.icon-play {left:50px;}
   .comment.link {width:140px;padding:5px 0;}
@@ -344,7 +344,6 @@ pre .keyword,pre .javascript .function {color:#cc99cc;}
   #post0 h2 a {color:#fff;}
   #post0 .summary {display:none;}
   .stuff span {margin-right:10px;}
-  .stuff span:first-child {display:none;}
   .content table {font-size:smaller;}
   .content table tr td {padding:6px;}
   .article {width:100%;}

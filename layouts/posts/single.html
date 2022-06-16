@@ -21,7 +21,9 @@
                 <h1 class="title">{{ .Title }}</h1>
                 <div class="stuff">
                     <span>{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Format "02, 2006" }}</span>
-                    <span>阅读时间：{{ math.Round (div (countwords .Content) 400.0) }} 分钟</span>
+                    <span>预计阅读 {{ math.Round (div (countwords .Content) 400.0) }} 分钟</span>
+                    阅读 <span id="busuanzi_value_page_pv"></span>
+                    评论 <a href="#remark42"><span class="remark42__counter" data-url="{{ .RelPermalink }}"></span></a>
                     <ul class="post-tags-list">
                         {{ range .Params.tags }}
                             <li class="post-tags-list-item">
@@ -30,13 +32,14 @@
                         {{ end }}
                     </ul>
                 </div>
-                <section class="content markdown">
+                <div class="content markdown">
                     {{ .Content }}
                     <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="{{ .Params.bgmAutoplay }}">
                         <source type="audio/mpeg" src="{{ .Params.bgm }}">
                         <a href="{{ .Params.bgm }}">{{ .Params.bgm }}</a>
                     </audio>
-                </section>
+                    {{ partial "remark42.html" . }}
+                </div>
             </div>
         </div>
     </div>
