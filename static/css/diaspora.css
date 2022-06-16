@@ -142,6 +142,7 @@ h1.title {font-size:30px;color:#333;line-height:1.3;position:relative;font-weigh
 .page .content:before {display:none;}
 .stuff {margin-top:20px;color:#666;font-size:13px;}
 .stuff span {display:inline-block;margin-right:20px;}
+.stuff a {color:#666;background-color: transparent;text-decoration: none;}
 .stuff .likeThis {pointer-events:none;}
 .stuff .icon-like {display:none;}
 .stuff .count {color:#666;}
