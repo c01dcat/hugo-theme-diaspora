@@ -8,10 +8,7 @@
                         <h2 style="color: gray;">搜索</h2>
                         <div id="site_search" class="search">
                             <input type="text" id="local-search-input" class="search-input" placeholder="你想找些什么？" />
-                            <div id="local-search-result" class="local-search-result">
-                                <ul id="searchResults" class="search-result-list">
-                                </ul>
-                            </div>
+                            <div id="local-search-result" class="local-search-result"></div>
                         </div>
                     </div>
                 </div>
@@ -19,6 +16,4 @@
             </div>
         </div>
     </div>
-    <script src="{{ "js/fuse.js" | relURL }}"></script>
-    <script src="{{ "js/fastsearch.js" | relURL }}"></script>
 {{ end }}
