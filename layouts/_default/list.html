@@ -5,12 +5,30 @@
             <div class="article">
                 <div class="main">
                     <div class="content">
-                        <h2 class="timeline-title">{{ .Title }}</h2><hr>
-                        {{ range .Pages }}          
-                        <div class="timeline-item">
-                            <time>{{ .Date.Format "2006-01-02" }}</time>
-                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                        </div>
+                        {{ if eq .Title "归档" }}
+                            <div class="timeline">
+                                <h2 class="timeline-title">{{ .Title }}</h2><hr>
+                                {{ $years := slice }}
+                                {{ range (where .Site.RegularPages "Type" "in" "posts").ByDate.Reverse }}
+                                {{ if in $years .Date.Year }}
+                                {{ else }}
+                                {{ $years = $years | append .Date.Year }}
+                                <h3 class="timeline-subtitle">{{ .Date.Year }}</h3>
+                                {{ end }}         
+                                <div class="timeline-item">
+                                    <time>{{ .Date.Format "2006-01-02" }}</time>
+                                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                </div>
+                                {{ end }}
+                            </div>
+                        {{ else }}
+                            <h2 class="timeline-title">{{ .Title }}</h2><hr>
+                            {{ range .Pages }}          
+                            <div class="timeline-item">
+                                <time>{{ .Date.Format "2006-01-02" }}</time>
+                                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            </div>
+                            {{ end }}
                         {{ end }}
                     </div>
                 </div>

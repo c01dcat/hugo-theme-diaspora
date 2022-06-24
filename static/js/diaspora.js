@@ -314,16 +314,18 @@ $(function() {
 		'use strict'; //使用严格模式
 		$.ajax({
 			url: path,
-			dataType: "xml",
-			success: function( xmlResponse ) {
-				// 从xml中获取相应的标题等数据
-				var datas = $( "entry", xmlResponse ).map(function() {
-					return {
-						title: $( "title", this ).text(),
-						content: $("content",this).text(),
-						url: $( "url" , this).text()
-					};
-				}).get();
+			dataType: "json",
+			success: function( response ) {
+				// 从 json 中获取相应的标题等数据
+                var datas = response.map(item => {
+                    const results = {};
+
+                    results["title"] = item.title;
+                    results["content"] = item.content;
+                    results["url"] = item.permalink;
+
+                    return results;
+                })
 				//ID选择器
 				var $input = document.getElementById(search_id);
 				var $resultContent = document.getElementById(content_id);
@@ -394,7 +396,7 @@ $(function() {
 			}
 		})
 	};
-	var path = window.searchDbPath || "/search.xml";
+	var path = window.searchDbPath || "/search/index.json";
 	if(document.getElementById('local-search-input') !== null){
 		searchFunc(path, 'local-search-input', 'local-search-result');
 	}
