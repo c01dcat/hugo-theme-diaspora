@@ -8,7 +8,7 @@
         <div class="social">
             <div>
                 <div class="share">
-                    <a href="javascript:;" title="获取二维码" class="iconfont icon-scan"></a>
+                    <a href="javascript:;" title="获取二维码" class="iconfont icon-qrcode"></a>
                 </div>
                 <div id="qr"></div>
             </div>
@@ -23,7 +23,7 @@
                     <span>{{ index $.Site.Data.month (printf "%d" .Date.Month) }} {{ .Date.Format "02, 2006" }}</span>
                     <span>预计阅读 {{ math.Round (div (countwords .Content) 400.0) }} 分钟</span>
                     阅读 <span id="busuanzi_value_page_pv"></span>
-                    评论 <a href="#remark42"><span class="remark42__counter" data-url="{{ .RelPermalink }}"></span></a>
+                    评论 <a href="#remark42"><span class="remark42__counter" data-url="{{ .Permalink }}"></span></a>
                     <ul class="post-tags-list">
                         {{ range .Params.tags }}
                             <li class="post-tags-list-item">
