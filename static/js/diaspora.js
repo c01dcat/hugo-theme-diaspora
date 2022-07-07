@@ -495,11 +495,11 @@ $(function() {
                 return false;
                 break;
             // qrcode
-            case (tag.indexOf('icon-scan') != -1):
-                if ($('.icon-scan').hasClass('tg')) {
+            case (tag.indexOf('icon-qrcode') != -1):
+                if ($('.icon-qrcode').hasClass('tg')) {
                     $('#qr').toggle()
                 } else {
-                    $('.icon-scan').addClass('tg')
+                    $('.icon-qrcode').addClass('tg')
                     $('#qr').qrcode({ width: 128, height: 128, text: location.href}).toggle()
                 }
                 return false;

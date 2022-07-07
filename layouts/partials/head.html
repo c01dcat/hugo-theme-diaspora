@@ -11,7 +11,8 @@
     {{ with .Keywords }}<meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">{{ end }}
     
     <link rel="icon" href="{{ .Site.Params.favicon | relURL }}">
-    <link rel="stylesheet" href="{{ "css/diaspora.css" | relURL }}">
+    {{ $css := resources.Get "css/diaspora.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
     {{ range .AlternativeOutputFormats -}} 

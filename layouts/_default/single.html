@@ -1,0 +1,14 @@
+{{ define "main" }}
+    <div id="single" class="page">
+        {{- partial "top.html" . -}}
+        <div class="section">
+            <div class="article">
+                <div class="main">
+                    <div class="content markdown">
+                        {{ .Content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
